@@ -70,7 +70,7 @@ $("profileForm").addEventListener("submit", (event) => {
   event.preventDefault();
   calculateAndRender();
 });
-$("regenerateButton").addEventListener("click", calculateAndRender);
+// $("regenerateButton").addEventListener("click", calculateAndRender);
 $("recalculateButton").addEventListener("click", () => {
   $("profileForm").scrollIntoView({ behavior: "smooth", block: "start" });
   $("age").focus({ preventScroll: true });
