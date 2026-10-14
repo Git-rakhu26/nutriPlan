@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8fc">
+  <meta name="description" content="Personal BMI, calorie, protein and meal planning calculator.">
+  <title>NutriPlan — Personal Nutrition Planner</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">✳</span>NutriPlan<span class="brand-dot">.</span></a>
+    <span class="top-note">Your everyday nutrition companion</span>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">YOUR HEALTH, PERSONALIZED</span>
+        <h1>Eat better.<br><span>Feel stronger.</span></h1>
+        <p>Calculate your nutritional needs and build a meal plan that fits your lifestyle.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true"><span class="art-circle circle-one"></span><span class="art-circle circle-two"></span><span class="art-food">🥑</span><span class="art-food art-food-two">🥗</span><span class="art-food art-food-three">🍊</span></div>
+    </section>
+
+    <form id="profileForm">
+      <section class="panel">
+        <div class="section-heading"><div><span class="step-label">STEP 01</span><h2>Tell us about yourself</h2><p>These details help estimate your daily requirements.</p></div><span class="heading-icon">👤</span></div>
+        <div class="form-grid">
+          <label>Age (years)<input id="age" type="number" min="18" max="100" value="21" required></label>
+          <label>Sex used for calorie equation<select id="sex"><option value="male">Male</option><option value="female">Female</option></select></label>
+          <label>Height (cm)<input id="height" type="number" min="100" max="250" value="160" required></label>
+          <label>Current weight (kg)<input id="weight" type="number" min="25" max="350" step="0.1" value="45" required></label>
+          <label>Activity level<select id="activity"><option value="1.2">Sedentary — little exercise</option><option value="1.375">Light — exercise 1–3 days/week</option><option value="1.55" selected>Moderate — exercise 3–5 days/week</option><option value="1.725">Very active — exercise 6–7 days/week</option><option value="1.9">Extra active — intense training/physical work</option></select></label>
+          <label>Main goal<select id="goal"><option value="muscle">Build muscle</option><option value="gain">Gain weight</option><option value="maintain">Maintain weight</option><option value="lose">Lose weight</option></select></label>
+        </div>
+        <div class="notice"><span>💡</span><p>These are estimates, not medical prescriptions. This starter version is designed for adults aged 18 and over.</p></div>
+      </section>
+      <section class="panel">
+        <div class="section-heading"><div><span class="step-label">STEP 02</span><h2>Choose your food preferences</h2><p>Your plan should fit your eating habits.</p></div><span class="heading-icon">🥑</span></div>
+        <div class="form-grid">
+          <label>Diet preference<select id="diet"><option value="veg">Vegetarian</option><option value="egg" selected>Vegetarian + eggs</option><option value="nonveg">Includes meat and fish</option></select></label>
+          <label>Meals per day<select id="mealCount"><option value="3">3 meals</option><option value="4" selected>4 meals</option><option value="5">5 meals</option></select></label>
+          <label>Food budget<select id="budget"><option value="budget">Budget-friendly</option><option value="flexible" selected>Flexible</option></select></label>
+          <label>Cuisine preference<select id="cuisine"><option value="indian" selected>Indian</option><option value="mixed">Mixed / international</option></select></label>
+          <label class="full-width">Foods to avoid<input id="avoid" type="text" placeholder="e.g. peanuts, milk, soy"><span class="field-hint">Comma-separated food names. Not a reliable allergy safety system.</span></label>
+          <label class="full-width">Additional preference (optional)<textarea id="notes" rows="2" placeholder="e.g. prefer rice over roti, no protein powder"></textarea></label>
+        </div>
+        <button class="primary-button" type="submit">Calculate my nutrition <span>→</span></button>
+      </section>
+    </form>
+
+    <section id="results" hidden>
+      <div class="results-heading"><div><span class="eyebrow">YOUR PERSONAL DASHBOARD</span><h2>Your nutrition overview</h2><p id="resultSubtitle"></p></div><button class="secondary-button" id="printButton" type="button">Print plan ↗</button></div>
+      <div id="warningArea" class="warning-area" aria-live="polite"></div>
+      <div class="metric-grid">
+        <article class="metric-card metric-purple"><span class="metric-icon">⚖️</span><span class="metric-label">BMI</span><strong id="bmiValue">—</strong><span id="bmiLabel" class="metric-detail">—</span></article>
+        <article class="metric-card metric-orange"><span class="metric-icon">🔥</span><span class="metric-label">Maintenance</span><strong id="maintenanceValue">—</strong><span class="metric-detail">kcal / day</span></article>
+        <article class="metric-card metric-green"><span class="metric-icon">🎯</span><span class="metric-label">Daily calorie goal</span><strong id="goalValue">—</strong><span class="metric-detail">kcal / day</span></article>
+        <article class="metric-card metric-pink"><span class="metric-icon">💪</span><span class="metric-label">Protein target</span><strong id="proteinValue">—</strong><span class="metric-detail">grams / day</span></article>
+      </div>
+      <div class="dashboard-grid">
+        <article class="panel chart-panel"><div class="section-heading"><div><h2>Daily macro targets</h2><p>Estimated grams of each macronutrient.</p></div></div><div class="chart-wrap"><canvas id="macroChart" role="img" aria-label="Protein, carbohydrate and fat target chart"></canvas></div><div id="macroLegend" class="macro-legend"></div></article>
+        <article class="panel nutrition-panel"><div class="section-heading"><div><h2>Your daily targets</h2><p>Suggested nutrition goals.</p></div></div><div id="targetList"></div></article>
+      </div>
+      <section class="panel">
+        <div class="section-heading"><div><span class="step-label">YOUR DAILY MENU</span><h2>Your personalized diet plan</h2><p>Suggested foods and approximate portions.</p></div><span class="heading-icon">🍽️</span></div>
+        <div id="planSummary" class="plan-summary"></div><div id="mealPlan" class="meal-grid"></div><div id="planTotals" class="plan-totals"></div><p class="field-hint" id="planNote"></p>
+      </section>
+      <section class="panel">
+        <div class="section-heading"><div><span class="step-label">FOOD BREAKDOWN</span><h2>Nutrition in every food</h2><p>Values are estimates for the listed edible portion.</p></div><span class="heading-icon">📊</span></div>
+        <div class="table-scroll"><table><thead><tr><th>Food</th><th>Portion</th><th>Calories</th><th>Protein</th><th>Carbs</th><th>Fat</th></tr></thead><tbody id="foodTable"></tbody><tfoot id="foodTableFoot"></tfoot></table></div>
+        <p class="field-hint">Nutrition varies by product and cooking method. Allergies and medical diets require careful verification.</p>
+      </section>
+      <div class="bottom-actions"><button id="recalculateButton" class="secondary-button" type="button">Edit my details</button><button id="regenerateButton" class="primary-button" type="button">Generate plan again ↻</button></div>
+    </section>
+    <footer><div class="brand">NutriPlan<span class="brand-dot">.</span></div><p id="disclaimer">Nutrition estimates for educational use. Not a substitute for a registered dietitian or healthcare professional.</p></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
