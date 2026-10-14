@@ -55,7 +55,7 @@ function calculateAndRender() {
 
     renderMetrics(profile, latestNeeds);
     renderMacroChart(latestNeeds);
-    // renderMeals(meals);
+     renderMeals(meals);
     // renderFoodTable(meals, latestNeeds);
     renderWarnings(profile, latestNeeds, meals, appData.settings);
 
