@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "equations": {
+    "bmr": "mifflin-st-jeor",
+    "activityMultipliers": {
+      "sedentary": 1.2,
+      "light": 1.375,
+      "moderate": 1.55,
+      "veryActive": 1.725,
+      "extraActive": 1.9
+    }
+  },
+  "goalAdjustmentsKcal": {
+    "muscle": 250,
+    "gain": 250,
+    "maintain": 0,
+    "lose": -400
+  },
+  "proteinGramsPerKg": {
+    "muscle": 1.8,
+    "gain": 1.6,
+    "maintain": 1.2,
+    "lose": 1.6
+  },
+  "fatEnergyShare": 0.27,
+  "adultBmiReference": {
+    "underweightBelow": 18.5,
+    "normalBelow": 25,
+    "overweightBelow": 30,
+    "obeseAtOrAbove": 30
+  },
+  "disclaimer": "Estimates are for educational use and are not medical advice. Food values vary by product, preparation and cooking method."
+}

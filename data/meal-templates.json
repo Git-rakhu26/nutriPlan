@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "templates": [
+    {
+      "name": "Breakfast",
+      "emoji": "🌅",
+      "foods": [
+        {
+          "group": "staple",
+          "grams": 100
+        },
+        {
+          "group": "dairy",
+          "grams": 200
+        },
+        {
+          "group": "fruit",
+          "grams": 100
+        },
+        {
+          "group": "protein",
+          "grams": 50
+        }
+      ]
+    },
+    {
+      "name": "Lunch",
+      "emoji": "🍛",
+      "foods": [
+        {
+          "group": "staple",
+          "grams": 180
+        },
+        {
+          "group": "protein",
+          "grams": 120
+        },
+        {
+          "group": "vegetable",
+          "grams": 150
+        },
+        {
+          "group": "fat",
+          "grams": 5
+        }
+      ]
+    },
+    {
+      "name": "Afternoon snack",
+      "emoji": "🍌",
+      "foods": [
+        {
+          "group": "fruit",
+          "grams": 120
+        },
+        {
+          "group": "dairy",
+          "grams": 150
+        },
+        {
+          "group": "nuts",
+          "grams": 15
+        }
+      ]
+    },
+    {
+      "name": "Dinner",
+      "emoji": "🌙",
+      "foods": [
+        {
+          "group": "staple",
+          "grams": 160
+        },
+        {
+          "group": "protein",
+          "grams": 120
+        },
+        {
+          "group": "vegetable",
+          "grams": 150
+        },
+        {
+          "group": "fat",
+          "grams": 5
+        }
+      ]
+    }
+  ]
+}
